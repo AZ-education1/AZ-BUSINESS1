@@ -20,6 +20,36 @@ document.onkeydown = (e) => {
 
 
 
+function noMenu() {
+  return false;
+}
+function disableCopyPaste(elm) {
+  // Disable cut/copy/paste key events
+  elm.onkeydown = interceptKeys
+  // Disable right click events
+  elm.oncontextmenu = function() {
+    return false
+  }
+}
+function interceptKeys(evt) {
+  evt = evt||window.event // IE support
+  var c = evt.keyCode
+  var ctrlDown = evt.ctrlKey||evt.metaKey // Mac support
+  // Check for Alt+Gr (http://en.wikipedia.org/wiki/AltGr_key)
+  if (ctrlDown && evt.altKey) return true
+  // Check for ctrl+c, v and x
+  else if (ctrlDown && c==67) return false // c
+  else if (ctrlDown && c==86) return false // v
+  else if (ctrlDown && c==88) return false // x
+  // Otherwise allow
+  return true
+}
+
+
+
+
+
+
 
 document.addeventlistener('keyup',(e)=>{
 	navigator.cliboard.writeText('');
