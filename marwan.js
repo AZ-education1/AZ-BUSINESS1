@@ -1,19 +1,26 @@
-document.addeventlistener("contextmenu",function(e){e.preventdefault();
-});
-document.onkeydown=function(e){if(event.keycode==123){return false;
-}
-if(e.ctrl&&e.shiftkey&&e.keycode=="I"charCodeAt(0)){
-	return false;
-}
-if(e.ctrl&&e.shiftkey&&e.keycode=="c"charCodeAt(0)){
-	return false;
-}if(e.ctrl&&e.shiftkey&&e.keycode=="J"charCodeAt(0)){
-	return false;
-}if(e.ctrl&&e.shiftkey&&e.keycode=="u"charCodeAt(0)){
-	return false;
+document.addEventListener('contextmenu', (e) => e.preventDefault());
 
+function ctrlShiftKey(e, keyCode) {
+  return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
 }
+
+document.onkeydown = (e) => {
+  // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+  if (
+    event.keyCode === 123 ||
+    ctrlShiftKey(e, 'I') ||
+    ctrlShiftKey(e, 'J') ||
+    ctrlShiftKey(e, 'C') ||
+    (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+  )
+    return false;
 };
+
+
+
+
+
+
 document.addeventlistener('keyup',(e)=>{
 	navigator.cliboard.writeText('');
 	alert('screenshot Disabled');
