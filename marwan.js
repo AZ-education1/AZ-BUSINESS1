@@ -17,9 +17,6 @@ document.onkeydown = (e) => {
 };
 
 
-
-
-
 function noMenu() {
   return false;
 }
@@ -51,13 +48,10 @@ function interceptKeys(evt) {
 
 
 
-document.addeventlistener('keyup',(e)=>{
-	navigator.cliboard.writeText('');
-	alert('screenshot Disabled');
-});
-document.addeventlistener('keyup',(e)=>{
-	navigator.cliboard.writeText('');
-	alert('screenrecorder Disabled');
-});
+
+
+
+
+
 
 
